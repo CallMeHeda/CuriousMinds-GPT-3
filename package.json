@@ -1,5 +1,5 @@
 {
-  "name": "quizz-chat-gpt",
+  "name": "question-and-answer-chatgpt",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
