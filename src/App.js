@@ -1,10 +1,10 @@
 import "./styles/app.scss";
-import Quizz from "./compenents/QandA";
+import QandA from "./compenents/QandA";
 
 function App() {
   return (
     <div className="App">
-      <Quizz />
+      <QandA />
     </div>
   );
 }
