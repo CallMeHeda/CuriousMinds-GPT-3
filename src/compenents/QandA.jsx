@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { red } from "@mui/material/colors";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -41,13 +45,18 @@ const QandA = () => {
   return (
     <div className="question-and-answer">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="question-input">Ask your question : </label>
-        <input
-          id="question-input"
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-        />
+        <label htmlFor="question-input"></label>
+        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          <AccountCircle sx={{ color: red[400], mr: 1, my: 0.5 }} />
+          <TextField
+            id="outlined-basic question-input"
+            label="Ask your question"
+            variant="standard"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            color="secondary"
+          />
+        </Box>
         <button type="submit" onClick={handleClick}>
           Submit
         </button>
