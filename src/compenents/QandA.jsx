@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -13,7 +13,12 @@ const QandA = () => {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setQuestion("");
+  };
+
+  const handleClick = () => {
     setLoading(true);
     openai
       .createCompletion({
@@ -31,32 +36,34 @@ const QandA = () => {
         console.error(err);
         setLoading(false);
       });
-  }, [question]);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setAnswer("");
-    setLoading(false);
   };
 
   return (
-    <div className="app">
+    <div className="question-and-answer">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="question-input">Ask your question :</label>
+        <label htmlFor="question-input">Ask your question : </label>
         <input
           id="question-input"
           type="text"
           value={question}
-          onChange={(event) => setQuestion(event.target.value)}
+          onChange={(e) => setQuestion(e.target.value)}
         />
-        <button type="submit">Clear</button>
+        <button type="submit" onClick={handleClick}>
+          Submit
+        </button>
       </form>
-      {loading && <p>Waiting for the answer...</p>}
-      {answer && (
+      {loading && (
+        <>
+          <p>Waiting for the answer...</p>
+        </>
+      )}
+      {answer ? (
         <>
           <p>Answer :</p>
           <p>{answer}</p>
         </>
+      ) : (
+        <p>Oups 🙊</p>
       )}
     </div>
   );
