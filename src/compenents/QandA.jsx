@@ -54,7 +54,21 @@ const QandA = () => {
             variant="standard"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            color="secondary"
+            sx={{
+              borderRadius: "2px",
+              borderBottom: "2px solid red",
+            }}
+            InputLabelProps={{
+              sx: {
+                color: "red",
+                textTransform: "capitalize",
+              },
+            }}
+            inputProps={{
+              sx: {
+                color: "white",
+              },
+            }}
           />
         </Box>
         <button type="submit" onClick={handleClick}>
@@ -63,7 +77,7 @@ const QandA = () => {
       </form>
       {loading && (
         <>
-          <p>Waiting for the answer...</p>
+          <p>Waiting for the answer..</p>
         </>
       )}
       {answer ? (
