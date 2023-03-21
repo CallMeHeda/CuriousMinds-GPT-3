@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { red } from "@mui/material/colors";
+import {
+  InputAdornment,
+  FormControl,
+  InputLabel,
+  Input,
+  IconButton,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import QuestionAnswerTwoToneIcon from "@mui/icons-material/QuestionAnswerTwoTone";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -12,10 +17,42 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+const FormControls = styled(FormControl, {
+  shouldForwardProp: (prop) => prop !== "focusColor",
+})(({ color = "#ec4f4b", focusColor = "#cb437c" }) => ({
+  // Base color label
+  "& label": {
+    color: "#d27272",
+    fontSize: "15px",
+  },
+  // base color border bottom
+  "& .MuiInput-underline:before": {
+    borderBottomColor: color,
+  },
+  // base color border bottom on hover
+  "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+    borderBottomColor: focusColor,
+  },
+  // base color label on focus
+  "& label.Mui-focused": {
+    color: focusColor,
+    fontSize: "1rem",
+  },
+  // base color border bottom on focus
+  "& .MuiInput-underline:after": {
+    borderBottomColor: focusColor,
+  },
+  // color input
+  "& Input": {
+    color: "white",
+  },
+}));
+
 const QandA = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
+  const [clickedIcon, setClickedIcon] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +60,7 @@ const QandA = () => {
   };
 
   const handleClick = () => {
+    setClickedIcon(true);
     setLoading(true);
     openai
       .createCompletion({
@@ -44,50 +82,50 @@ const QandA = () => {
 
   return (
     <div className="question-and-answer">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="question-input"></label>
-        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
-          <AccountCircle sx={{ color: red[400], mr: 1, my: 0.5 }} />
-          <TextField
-            id="outlined-basic question-input"
-            label="Ask your question"
-            variant="standard"
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            sx={{
-              borderRadius: "2px",
-              borderBottom: "2px solid red",
-            }}
-            InputLabelProps={{
-              sx: {
-                color: "red",
-                textTransform: "capitalize",
-              },
-            }}
-            inputProps={{
-              sx: {
-                color: "white",
-              },
-            }}
-          />
-        </Box>
-        <button type="submit" onClick={handleClick}>
-          Submit
-        </button>
-      </form>
-      {loading && (
-        <>
-          <p>Waiting for the answer..</p>
-        </>
-      )}
-      {answer ? (
-        <>
-          <p>Answer :</p>
-          <p>{answer}</p>
-        </>
-      ) : (
-        <p>Oups 🙊</p>
-      )}
+      <div className="formDiv">
+        <form className="form" onSubmit={handleSubmit}>
+          <FormControls sx={{ m: 1, width: "25ch" }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-question">
+              Ask your question
+            </InputLabel>
+            <Input
+              id="standard-adornment-question"
+              type="text"
+              name="question"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle"
+                    onClick={handleClick}
+                    className={clickedIcon ? "clickedIcon" : ""}
+                  >
+                    <QuestionAnswerTwoToneIcon
+                      sx={{ color: "#7b6363", mr: 1, mt: -1 }}
+                    ></QuestionAnswerTwoToneIcon>
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControls>
+        </form>
+      </div>
+      <div className="answer">
+        {loading && (
+          <>
+            <p>Waiting for the answer..</p>
+          </>
+        )}
+        {answer ? (
+          <>
+            <p>Answer :</p>
+            <p>{answer}</p>
+          </>
+        ) : (
+          <p>Oups 🙊</p>
+        )}
+      </div>
     </div>
   );
 };
