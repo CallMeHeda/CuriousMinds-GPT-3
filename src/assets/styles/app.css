@@ -31,6 +31,9 @@ body {
 .question-and-answer .answer {
   display: flex;
   justify-content: center;
+  text-align: center;
+  font-family: "Amatic SC";
+  font-size: 18px;
 }
 .question-and-answer .footerDiv {
   display: flex;
@@ -58,10 +61,6 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
-  .question-and-answer .formDiv {
-    display: flex;
-    justify-content: center;
-  }
   .question-and-answer .formDiv .form .clickedIcon {
     transition: all 0.1s ease-in-out;
   }
@@ -71,6 +70,9 @@ body {
   .question-and-answer .answer {
     display: flex;
     justify-content: center;
+    text-align: center;
+    font-family: "Amatic SC";
+    font-size: 25px;
   }
   .question-and-answer .footerDiv footer p {
     font-size: 20px;

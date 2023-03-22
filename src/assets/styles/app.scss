@@ -20,7 +20,6 @@ body {
         font-size: 18px;
         font-family: $fontAmatic, sans-serif;
       }
-
       .clickedIcon {
         transition: all 0.1s ease-in-out;
 
@@ -33,6 +32,9 @@ body {
   .answer {
     display: flex;
     justify-content: center;
+    text-align: center;
+    font-family: $fontAmatic;
+    font-size: 18px;
   }
 
   .footerDiv {
@@ -65,8 +67,6 @@ body {
 @media screen and (min-width: 1024px) {
   .question-and-answer {
     .formDiv {
-      display: flex;
-      justify-content: center;
       .form {
         .clickedIcon {
           transition: all 0.1s ease-in-out;
@@ -80,6 +80,9 @@ body {
     .answer {
       display: flex;
       justify-content: center;
+      text-align: center;
+      font-family: $fontAmatic;
+      font-size: 25px;
     }
 
     .footerDiv {

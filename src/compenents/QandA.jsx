@@ -7,16 +7,13 @@ import {
   IconButton,
   AppBar,
   Toolbar,
-  Typography,
   useMediaQuery,
   useTheme,
-  Box,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import QuestionAnswerTwoToneIcon from "@mui/icons-material/QuestionAnswerTwoTone";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 import logo from "../assets/images/logo.png";
-import "../assets/styles/_variables.scss";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -114,7 +111,7 @@ const QandA = () => {
               Ask your question
             </InputLabel>
             <Input
-              id="standard-adornment-question"
+              id="question"
               type="text"
               name="question"
               value={question}
@@ -144,8 +141,6 @@ const QandA = () => {
         )}
         {answer ? (
           <>
-            <p>Answer :</p>
-            &nbsp;
             <p>{answer}</p>
           </>
         ) : (
