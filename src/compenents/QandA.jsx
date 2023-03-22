@@ -144,7 +144,7 @@ const QandA = () => {
             <p>{answer}</p>
           </>
         ) : (
-          <p>Oups 🙊</p>
+          <p>Oups, no question ? 🙊</p>
         )}
       </div>
 
