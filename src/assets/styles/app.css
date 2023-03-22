@@ -1,0 +1,87 @@
+html {
+  background-color: #0a1929;
+  color: rgba(255, 255, 255, 0.814);
+}
+
+.question-and-answer {
+  display: flex;
+  flex-direction: column;
+}
+.question-and-answer .appNavDiv {
+  display: flex;
+  justify-content: center;
+}
+.question-and-answer .appNavDiv .logoDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.question-and-answer .appNavDiv .logoDiv .imgLogo img {
+  width: 80px;
+}
+.question-and-answer .appNavDiv .titleDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.question-and-answer .appNavDiv .titleDiv .title {
+  font-size: 20px;
+  text-transform: capitalize;
+  text-align: center;
+  letter-spacing: 5px;
+}
+.question-and-answer .formDiv {
+  display: flex;
+  justify-content: center;
+}
+.question-and-answer .formDiv .form .clickedIcon {
+  transition: all 0.1s ease-in-out;
+}
+.question-and-answer .formDiv .form .clickedIcon:active {
+  transform: translateY(4px);
+}
+.question-and-answer .answer {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .question-and-answer .appNavDiv {
+    justify-content: flex-start;
+  }
+  .question-and-answer .appNavDiv .logoDiv {
+    border: 1px solid red;
+    flex-grow: 0;
+  }
+  .question-and-answer .appNavDiv .logoDiv .imgLogo img {
+    width: 150px;
+  }
+  .question-and-answer .appNavDiv .titleDiv {
+    border: 1px solid green;
+    flex-grow: 0;
+  }
+  .question-and-answer .appNavDiv .titleDiv .title {
+    font-size: 40px;
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: 10px;
+  }
+  .question-and-answer .formDiv {
+    display: flex;
+    justify-content: center;
+  }
+  .question-and-answer .formDiv .form .clickedIcon {
+    transition: all 0.1s ease-in-out;
+  }
+  .question-and-answer .formDiv .form .clickedIcon:active {
+    transform: translateY(4px);
+  }
+  .question-and-answer .answer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */

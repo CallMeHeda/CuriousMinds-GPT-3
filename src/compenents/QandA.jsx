@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import QuestionAnswerTwoToneIcon from "@mui/icons-material/QuestionAnswerTwoTone";
+import logo from "../assets/images/logo.png";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -82,6 +83,17 @@ const QandA = () => {
 
   return (
     <div className="question-and-answer">
+      <div className="appNavDiv">
+        <div className="logoDiv">
+          <div className="imgLogo">
+            {/* <img src={require("../assets/images/logo.png")} alt="my image" /> */}
+            <img src={logo} alt="curious minds" />
+          </div>
+        </div>
+        <div className="titleDiv">
+          <h1 className="title">Curious Minds</h1>
+        </div>
+      </div>
       <div className="formDiv">
         <form className="form" onSubmit={handleSubmit}>
           <FormControls sx={{ m: 1, width: "25ch" }} variant="standard">
@@ -120,6 +132,7 @@ const QandA = () => {
         {answer ? (
           <>
             <p>Answer :</p>
+            &nbsp;
             <p>{answer}</p>
           </>
         ) : (

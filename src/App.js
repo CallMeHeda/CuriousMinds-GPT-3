@@ -1,4 +1,4 @@
-import "./styles/app.scss";
+import "./assets/styles/app.scss";
 import QandA from "./compenents/QandA";
 
 function App() {
