@@ -5,10 +5,18 @@ import {
   InputLabel,
   Input,
   IconButton,
+  AppBar,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  Box,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import QuestionAnswerTwoToneIcon from "@mui/icons-material/QuestionAnswerTwoTone";
+import CopyrightIcon from "@mui/icons-material/Copyright";
 import logo from "../assets/images/logo.png";
+import "../assets/styles/_variables.scss";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -55,6 +63,9 @@ const QandA = () => {
   const [loading, setLoading] = useState(false);
   const [clickedIcon, setClickedIcon] = useState(false);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setQuestion("");
@@ -83,17 +94,19 @@ const QandA = () => {
 
   return (
     <div className="question-and-answer">
-      <div className="appNavDiv">
-        <div className="logoDiv">
-          <div className="imgLogo">
-            {/* <img src={require("../assets/images/logo.png")} alt="my image" /> */}
-            <img src={logo} alt="curious minds" />
-          </div>
-        </div>
-        <div className="titleDiv">
-          <h1 className="title">Curious Minds</h1>
-        </div>
-      </div>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#0a1929", boxShadow: "0" }}
+      >
+        <Toolbar>
+          {isMobile ? (
+            <img src={logo} alt="Curious Minds" height="80" />
+          ) : (
+            <img src={logo} alt="Curious Minds" height="150" />
+          )}
+        </Toolbar>
+      </AppBar>
+
       <div className="formDiv">
         <form className="form" onSubmit={handleSubmit}>
           <FormControls sx={{ m: 1, width: "25ch" }} variant="standard">
@@ -138,6 +151,30 @@ const QandA = () => {
         ) : (
           <p>Oups 🙊</p>
         )}
+      </div>
+
+      <div className="footerDiv">
+        <footer>
+          {isMobile ? (
+            <p>
+              <CopyrightIcon
+                className="copyrightIcon"
+                sx={{ color: "white", fontSize: "15px" }}
+              ></CopyrightIcon>
+              &nbsp; 2023 &nbsp; <a href="https://fatimaelamri.tk">Fatima.</a>{" "}
+              &nbsp; All rights reserved.
+            </p>
+          ) : (
+            <p>
+              <CopyrightIcon
+                className="copyrightIcon"
+                sx={{ color: "white", fontSize: "20px" }}
+              ></CopyrightIcon>
+              &nbsp;2023 &nbsp; <a href="https://fatimaelamri.tk">Fatima.</a>
+              &nbsp; All rights reserved.
+            </p>
+          )}
+        </footer>
       </div>
     </div>
   );

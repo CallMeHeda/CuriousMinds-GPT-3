@@ -1,43 +1,26 @@
+@import "variables";
+
 html {
-  background-color: #0a1929;
-  color: rgba(255, 255, 255, 0.814);
+  background-color: $backgroundColor;
+  color: $colorTxt;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 .question-and-answer {
   display: flex;
   flex-direction: column;
-
-  .appNavDiv {
-    display: flex;
-    justify-content: center;
-    .logoDiv {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      .imgLogo {
-        img {
-          width: 80px;
-        }
-      }
-    }
-    .titleDiv {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      .title {
-        font-size: 20px;
-        text-transform: capitalize;
-        text-align: center;
-        letter-spacing: 5px;
-      }
-    }
-  }
-
   .formDiv {
     display: flex;
     justify-content: center;
     .form {
+      label.MuiInputLabel-root {
+        font-size: 18px;
+        font-family: $fontAmatic, sans-serif;
+      }
+
       .clickedIcon {
         transition: all 0.1s ease-in-out;
 
@@ -51,34 +34,36 @@ html {
     display: flex;
     justify-content: center;
   }
+
+  .footerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    footer {
+      display: flex;
+      justify-content: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      line-height: 50px;
+      p {
+        display: flex;
+        align-items: center;
+        a {
+          text-decoration: none;
+          color: $colorTxt;
+          &:hover {
+            color: $redLight;
+          }
+        }
+      }
+    }
+  }
 }
 
 // CSS DESKTOP
 @media screen and (min-width: 1024px) {
   .question-and-answer {
-    .appNavDiv {
-      justify-content: flex-start;
-      .logoDiv {
-        border: 1px solid red;
-        flex-grow: 0;
-        .imgLogo {
-          img {
-            width: 150px;
-          }
-        }
-      }
-      .titleDiv {
-        border: 1px solid green;
-        flex-grow: 0;
-        .title {
-          font-size: 40px;
-          text-transform: capitalize;
-          text-align: center;
-          letter-spacing: 10px;
-        }
-      }
-    }
-
     .formDiv {
       display: flex;
       justify-content: center;
@@ -95,6 +80,14 @@ html {
     .answer {
       display: flex;
       justify-content: center;
+    }
+
+    .footerDiv {
+      footer {
+        p {
+          font-size: 20px;
+        }
+      }
     }
   }
 }
